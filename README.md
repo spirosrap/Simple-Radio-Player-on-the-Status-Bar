@@ -1,5 +1,5 @@
-# Simple-Radio-Player-on-the-Status-Bar
-## Start/stop your favorite internet radio station with this simple status bar app.
+# Simple Status-Bar Radio Player 
+# Start/stop your favorite internet radio station with this simple status bar app.
 
 ## Installation
 
