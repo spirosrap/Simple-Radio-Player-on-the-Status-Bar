@@ -4,9 +4,16 @@
 ## Installation
 
 * [Install VLC](http://www.videolan.org/vlc/)
-* Create a simple bash script:
+* Create this simple bash script:
 ```
 #!/usr/bin/env bash
 
 /Applications/VLC.app/Contents/MacOS/VLC -I rc "$@"
 ```
+* Save this to /usr/local/bin and then make it executable
+
+```
+chmod +x /usr/local/bin/vlc
+```
+* Run the app.
+* You can change the radio station from the variable ```url``` in the app delegate.

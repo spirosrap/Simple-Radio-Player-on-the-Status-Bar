@@ -14,7 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system().statusItem(withLength: -2)
     var task = Process()
-
+    
+    let url = "http://37.59.32.115:6224/stream"
+    let vlcPath = "/usr/local/bin/vlc"
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
             button.image = NSImage(named: "StatusBarButtonImage")
@@ -28,8 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "Q"))
         statusItem.menu = menu
         
-        task.launchPath = "/usr/local/bin/vlc"
-        task.arguments = ["http://37.59.32.115:6224/streame"]
+        task.launchPath = vlcPath
+        task.arguments = [url]
         
 
     }
@@ -58,8 +61,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         task.terminate()
         task = Process()
-        task.launchPath = "/usr/local/bin/vlc"
-        task.arguments = ["http://37.59.32.115:6224/streame"]
+        task.launchPath = vlcPath
+        task.arguments = [url]
     }
     
     func quit(){
