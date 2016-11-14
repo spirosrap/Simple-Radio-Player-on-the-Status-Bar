@@ -4,7 +4,7 @@
 ## Installation
 
 * [Install VLC](http://www.videolan.org/vlc/)
-* Create this simple bash script:
+* Create this simple bash script (name it ```vlc```):
 ```
 #!/usr/bin/env bash
 
