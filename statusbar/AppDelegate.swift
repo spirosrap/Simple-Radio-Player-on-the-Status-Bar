@@ -12,15 +12,63 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 
+    let statusItem = NSStatusBar.system().statusItem(withLength: -2)
+    var task = Process()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        if let button = statusItem.button {
+            button.image = NSImage(named: "StatusBarButtonImage")
+        }
+        
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Start Radio", action: #selector(startRadio), keyEquivalent: "P"))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Stop Radio", action: #selector(stopRadio), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "Q"))
+        statusItem.menu = menu
+        
+        task.launchPath = "/usr/local/bin/vlc"
+        task.arguments = ["http://37.59.32.115:6224/streame"]
+        
+
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        if task.isRunning {
+            task.terminate()
+        }
     }
+    
+    func startRadio(){
+        DispatchQueue.global(qos: .background).async {
+                print("Started")
+                if let button = self.statusItem.button {
+                    button.image = NSImage(named: "radioButtonImage")
+                }
 
+                self.task.launch()
+                self.task.waitUntilExit()
+        }
+    }
+    
+    func stopRadio(){
+        if let button = statusItem.button {
+            button.image = NSImage(named: "StatusBarButtonImage")
+        }
+        task.terminate()
+        task = Process()
+        task.launchPath = "/usr/local/bin/vlc"
+        task.arguments = ["http://37.59.32.115:6224/streame"]
+    }
+    
+    func quit(){
+        if task.isRunning {
+            task.terminate()
+        }
+        exit(0)
+    }
+    
 
 }
 
