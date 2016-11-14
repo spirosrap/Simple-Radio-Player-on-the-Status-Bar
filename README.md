@@ -5,8 +5,8 @@
 
 * [Install VLC](http://www.videolan.org/vlc/)
 * Create a simple bash script:
-cdt
+```
 #!/usr/bin/env bash
 
 /Applications/VLC.app/Contents/MacOS/VLC -I rc "$@"
-cdt
+```
