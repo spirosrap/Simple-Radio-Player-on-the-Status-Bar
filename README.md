@@ -17,3 +17,10 @@ chmod +x /usr/local/bin/vlc
 ```
 * Run the app.
 * You can change the radio station from the variable ```url``` in the app delegate.
+
+### Screenshots
+
+![img](sc1.png)
+![img](sc2.png)
+
+### Helpful links
