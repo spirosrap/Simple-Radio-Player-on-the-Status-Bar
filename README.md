@@ -24,3 +24,6 @@ chmod +x /usr/local/bin/vlc
 ![img](sc2.png)
 
 ### Helpful links
+
+* [Run VLC from the command line on Mac OS X and stream internet radio (such as Radio Paradise).](https://gist.github.com/kgriffs/6393192)
+* [OS X Tutorial: Menus and Popovers in Menu Bar Apps](https://www.raywenderlich.com/98178/os-x-tutorial-menus-popovers-menu-bar-apps)
