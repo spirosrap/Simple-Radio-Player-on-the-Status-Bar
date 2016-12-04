@@ -44,14 +44,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func startRadio(){
-        DispatchQueue.global(qos: .background).async {
-                print("Started")
-                if let button = self.statusItem.button {
-                    button.image = NSImage(named: "radioButtonImage")
-                }
+        if !task.isRunning {
+            DispatchQueue.global(qos: .background).async {
+                    print("Started")
+                    if let button = self.statusItem.button {
+                        button.image = NSImage(named: "radioButtonImage")
+                    }
 
-                self.task.launch()
-                self.task.waitUntilExit()
+                    self.task.launch()
+                    self.task.waitUntilExit()
+            }
+        } else{
+            let answer = dialogOKCancel(question: "The Radio is already Playing!", text: "Stop the radio first!")
         }
     }
     
@@ -72,6 +76,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         exit(0)
     }
     
+    func dialogOKCancel(question: String, text: String) -> Bool {
+        let myPopup: NSAlert = NSAlert()
+        myPopup.messageText = question
+        myPopup.informativeText = text
+        myPopup.alertStyle = NSAlertStyle.warning
+        myPopup.addButton(withTitle: "OK")
+        myPopup.addButton(withTitle: "Cancel")
+        return myPopup.runModal() == NSAlertFirstButtonReturn
+    }
+
 
 }
 
