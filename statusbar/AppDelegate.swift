@@ -82,7 +82,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         myPopup.informativeText = text
         myPopup.alertStyle = NSAlertStyle.warning
         myPopup.addButton(withTitle: "OK")
-        myPopup.addButton(withTitle: "Cancel")
+//        myPopup.addButton(withTitle: "Cancel")
         return myPopup.runModal() == NSAlertFirstButtonReturn
     }
 
